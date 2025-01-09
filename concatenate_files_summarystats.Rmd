@@ -24,9 +24,9 @@ dccids <- list.files()
 create sheets
 ```{r}
 RS_power <- NULL
-FACE_power <- NULL
+FACE_SME <- NULL
 FACE_trial <- NULL
-MMN_power <- NULL
+MMN_SME <- NULL
 MMN_trial <- NULL
 ```
 
@@ -50,8 +50,9 @@ for (x in dccids) {
   if (file.exists(FACE_summary_file)) {
     FACE_summary_sheet <- read.csv(FACE_summary_file)
     for (i in 1:nrow(FACE_summary_sheet)) {
+      FACE_summary_sheet$ID <- x
       row <- FACE_summary_sheet[i, , drop = FALSE]
-      FACE_power <- rbind(FACE_power, row)
+      FACE_SME <- rbind(FACE_SME, row)
     }
   } else {
     message(paste("FACE file not found for", x))
@@ -61,8 +62,9 @@ for (x in dccids) {
   if (file.exists(MMN_summary_file)) {
     MMN_summary_sheet <- read.csv(MMN_summary_file)
     for (i in 1:nrow(MMN_summary_sheet)) {
+      MMN_summary_sheet$ID <- x
       row <- MMN_summary_sheet[i, , drop = FALSE]
-      MMN_power <- rbind(MMN_power, row)
+      MMN_SME <- rbind(MMN_SME, row)
     }
   } else {
     message(paste("MMN file not found for", x))
@@ -74,8 +76,8 @@ for (x in dccids) {
 
 output df as a csv
 ```{r}
-write.csv(FACE_power,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/FACE_power.csv")
+write.csv(FACE_SME,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/FACE_SME.csv") #SM change these names to where you would like to output the summary sheets, keeping the "{TASK}_SME.csv"
 write.csv(RS_power,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/RS_power.csv")
-write.csv(MMN_power,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/MMN_power.csv")
+write.csv(MMN_SME,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/MMN_SME.csv")
 ```
 
