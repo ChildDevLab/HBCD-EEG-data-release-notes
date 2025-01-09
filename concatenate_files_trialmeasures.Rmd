@@ -14,10 +14,20 @@ necessary packages
 library(dplyr)
 ```
 
+Load in your paths
+directory path is where you have saved your summary stats or trial measures data
+output path is where you would like the outputs to get saved
+```{r}
+#SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
+directory_path <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_8.14/" 
+output_path <- "Z:/Dropboxes/tmahesh/data release csvs/"
+```
+
+
 set cwd to file path, get ids 
 ```{r}
-setwd("X:/Projects/hbcd/EEG/Main_Study/CBRAIN_8.14") #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
-cwd <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_8.14/"
+setwd(directory_path)
+cwd <- directory_path
 dccids <- list.files()
 ```
 
@@ -28,6 +38,7 @@ MMN_trialmeasures <- NULL
 ```
 
 for each folder (ID), pull trial stats by task and condition
+#change names of files to new names!!!
 ```{r}
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
@@ -72,7 +83,6 @@ for (x in dccids) {
 
 output df as a csv
 ```{r}
-write.csv(FACE_trialmeasures,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/FACE_trialMeasures.csv") #SM change these names to where you would like to output the summary sheets, keeping the "{TASK}_SME.csv"
-#write.csv(RS_power,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/RS_power.csv")
-write.csv(MMN_trialmeasures,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/MMN_trialMeasures.csv")
+write.csv(FACE_trialmeasures, paste(output_path, "FACE_trialMeasures.csv", sep = "")) 
+write.csv(MMN_trialmeasures, paste(output_path, "MMN_trialMeasures.csv", sep = ""))
 ```
