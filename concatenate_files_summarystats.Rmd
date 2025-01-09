@@ -89,6 +89,6 @@ output df as a csv
 ```{r}
 write.csv(FACE_SME, paste(output_path, "FACE_SME.csv", sep="")) #SM change these names to where you would like to output the summary sheets, keeping the "{TASK}_SME.csv"
 write.csv(RS_power,paste(output_path,"RS_power.csv", sep=""))
-write.csv(MMN_SME,paste(ouput_path, "MMN_SME.csv", sep = ""))
+write.csv(MMN_SME,paste(output_path, "MMN_SME.csv", sep = ""))
 ```
 
