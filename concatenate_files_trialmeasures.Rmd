@@ -27,7 +27,7 @@ FACE_trialmeasures <- NULL
 MMN_trialmeasures <- NULL
 ```
 
-for each folder (ID), pull summary stats by task and condition
+for each folder (ID), pull trial stats by task and condition
 ```{r}
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
