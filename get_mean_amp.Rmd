@@ -25,9 +25,9 @@ setwd(directory_path)
 cwd <- directory_path
 dccids <- list.files()
 ```
+
 for each folder (ID), pull trial measures and summary stats
 create a mean score from trial measures per condition, and add that mean score to summary stats
-
 ```{r}
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
@@ -50,34 +50,41 @@ for (x in dccids) {
     message(paste("VEP file not found for", x))
   }
   
-  # FACE_trial <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPTrialMeasures.csv", sep="")
-  # FACE_sum <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPSummaryStats.csv", sep="")
-  # if (file.exists(FACE_trial) & file.exists(FACE_sum)) {
-  #   FACE_trial_sheet <- read.csv(FACE_trial)
-  #   FACE_summary_sheet <- read.csv(FACE_sum)
-  #   cols <- grepl("MeanAmplitude", names(FACE_trial_sheet))
-  #   #FACE_Amps <- FACE_trial_sheet[,cols] #list of just amp columns
-  #   newcols <- colnames(FACE_trial_sheet[,cols])
-  #   FACE_summary_sheet[c(newcols)] <- NA
-  #   
-  #   #sep out by condition
-  #   FACE_uprightInv = subset(FACE_trial_sheet, Condition == "uprightInv")
-  #   FACE_uprightInv <- FACE_uprightInv[,cols] #list of just amp columns
-  #   FACE_uprightObj = subset(FACE_trial_sheet, Condition == "uprightObj")
-  #   FACE_uprightObj <- FACE_uprightObj[,cols] #list of just amp columns
-  #   FACE_object = subset(FACE_trial_sheet, Condition == "object")
-  #   FACE_object <- FACE_object[,cols] #list of just amp columns
-  #   FACE_inverted = subset(FACE_trial_sheet, Condition == "inverted")
-  #   FACE_inverted <- FACE_inverted[,cols] #list of just amp columns
-  # 
-  #   for (i in 1:ncol(FACE_uprightInv)) {
-  #     meanamp = mean(FACE_uprightInv[,i])
-  #     row = FACE_summary_sheet[match("uprightInv", FACE_summary_sheet$Condition),]
-  #     FACE_summary_sheet[,colnames(FACE_uprightInv)[i]] = meanamp
-  #   }
-  # } else {
-  #   message(paste("FACE file not found for", x))
-  # }
+  FACE_trial <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPTrialMeasures.csv", sep="")
+  FACE_sum <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPSummaryStats.csv", sep="")
+  if (file.exists(FACE_trial) & file.exists(FACE_sum)) {
+    FACE_trial_sheet <- read.csv(FACE_trial)
+    FACE_summary_sheet <- read.csv(FACE_sum)
+    cols <- grepl("MeanAmplitude", names(FACE_trial_sheet))
+    #FACE_Amps <- FACE_trial_sheet[,cols] #list of just amp columns
+    newcols <- colnames(FACE_trial_sheet[,cols])
+    FACE_summary_sheet[c(newcols)] <- NA
+
+    #sep out by condition
+    FACE_uprightInv = subset(FACE_trial_sheet, Condition == "uprightInv")
+    FACE_uprightInv <- FACE_uprightInv[,cols] #list of just amp columns
+    FACE_uprightObj = subset(FACE_trial_sheet, Condition == "uprightObj")
+    FACE_uprightObj <- FACE_uprightObj[,cols] #list of just amp columns
+    FACE_object = subset(FACE_trial_sheet, Condition == "object")
+    FACE_object <- FACE_object[,cols] #list of just amp columns
+    FACE_inverted = subset(FACE_trial_sheet, Condition == "inverted")
+    FACE_inverted <- FACE_inverted[,cols] #list of just amp columns
+    amp_sheets <- c(FACE_uprightInv, FACE_uprightObj, FACE_object, FACE_inverted)
+    
+    for (i in 1:ncol(FACE_uprightInv)){
+      #basically go through each condition (4) and find mean amp for each column (4) and add it to the corresponding row in summary sheet
+      meanamp = mean(FACE_uprightInv[,i])
+      FACE_summary_sheet[FACE_summary_sheet$Condition == "uprightInv",colnames(FACE_uprightInv)[i]] = meanamp 
+      meanamp = mean(FACE_uprightObj[,i])
+      FACE_summary_sheet[FACE_summary_sheet$Condition == "uprightObj",colnames(FACE_uprightObj)[i]] = meanamp 
+      meanamp = mean(FACE_object[,i])
+      FACE_summary_sheet[FACE_summary_sheet$Condition == "object",colnames(FACE_object)[i]] = meanamp 
+      meanamp = mean(FACE_inverted[,i])
+      FACE_summary_sheet[FACE_summary_sheet$Condition == "inverted",colnames(FACE_inverted)[i]] = meanamp 
+    }
+  } else {
+    message(paste("FACE file not found for", x))
+  }
   
   # 
   # MMN_summary_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERP-summaryStats.csv", sep="")
