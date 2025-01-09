@@ -53,11 +53,41 @@ The following are instructions on how to run each of the provided scripts.
 1. concatenate_files_summary.Rmd:
 This script concatenate all summary statistics (SME) across participants and outputs a sheet for the Resting State, FACE, and MMN Tasks. 
 
+To use this script: 
+1. Open the script using RStudio. 
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 23. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+4. At the top right of the script, click the down arrow next to the "Run" icon. 
+5. At the bottom of the list, click "Run All" 
+6. Your output sheets can be seen in the folder provided on line 23.
+
 2. concatenate_files_trialmeasures.Rmd:
 This script concatenates all ERP relevant mean amplitudes at the individual trial level across participants for the FACE and MMN Tasks.
 
+To use this script: 
+1. Open the script using RStudio. 
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 23. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+4. At the top right of the script, click the down arrow next to the "Run" icon. 
+5. At the bottom of the list, click "Run All" 
+6. Your output sheets can be seen in the folder provided on line 23.
+
 3. separate_conditions.Rmd: 
 This script filters concatenated data into task specific conditions (upright, inverted, object for FACE and standard, deviant, pre-deviant for MMN).
+
+To use this script: 
+1. Open the script using RStudio. 
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 17. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 18. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+4. At the top right of the script, click the down arrow next to the "Run" icon. 
+5. At the bottom of the list, click "Run All" 
+6. Your output sheets can be seen in the folder provided on line 23.
 
 4. get_mean_amp.Rmd: 
 This script pulls the trial measure data for each participant and calculates mean amplitude at each time window of interest. 
