@@ -1,0 +1,78 @@
+---
+title: "concatenate_trial_measures"
+author: "Savannah McNair"
+date: "2025-01-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+necessary packages
+```{r}
+library(dplyr)
+```
+
+set cwd to file path, get ids 
+```{r}
+setwd("X:/Projects/hbcd/EEG/Main_Study/CBRAIN_8.14") #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
+cwd <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_8.14/"
+dccids <- list.files()
+```
+
+create sheets
+```{r}
+FACE_trialmeasures <- NULL
+MMN_trialmeasures <- NULL
+```
+
+for each folder (ID), pull summary stats by task and condition
+```{r}
+for (x in dccids) {
+  processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
+  
+  # RS_power_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-RS_Power-summaryStats.csv", sep="")
+  # if (file.exists(RS_power_file)) {
+  #   RS_power_sheet <- read.csv(RS_power_file)
+  #   for (i in 1:nrow(RS_power_sheet)) {
+  #     row <- RS_power_sheet[i, , drop = FALSE]
+  #     RS_power <- rbind(RS_power, row)
+  #   }
+  # } else {
+  #   message(paste("RS Power file not found for", x))
+  # }
+  
+  FACE_trialmeasures_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERP-trialMeasures.csv", sep="")
+  if (file.exists(FACE_trialmeasures_file)) {
+    FACE_trialmeasures_sheet <- read.csv(FACE_trialmeasures_file)
+    for (i in 1:nrow(FACE_trialmeasures_sheet)) {
+      #FACE_trialmeasures_sheet$ID <- x
+      row <- FACE_trialmeasures_sheet[i, , drop = FALSE]
+      FACE_trialmeasures <- rbind(FACE_trialmeasures, row)
+    }
+  } else {
+    message(paste("FACE file not found for", x))
+  }
+  
+  MMN_trialmeasures_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERP-trialMeasures.csv", sep="")
+  if (file.exists(MMN_trialmeasures_file)) {
+    MMN_trialmeasures_sheet <- read.csv(MMN_trialmeasures_file)
+    for (i in 1:nrow(MMN_trialmeasures_sheet)) {
+      #MMN_trialmeasures_sheet$ID <- x
+      row <- MMN_trialmeasures_sheet[i, , drop = FALSE]
+      MMN_trialmeasures <- rbind(MMN_trialmeasures, row)
+    }
+  } else {
+    message(paste("MMN file not found for", x))
+  }
+}
+
+```
+
+output df as a csv
+```{r}
+write.csv(FACE_trialmeasures,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/FACE_trialMeasures.csv") #SM change these names to where you would like to output the summary sheets, keeping the "{TASK}_SME.csv"
+#write.csv(RS_power,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/RS_power.csv")
+write.csv(MMN_trialmeasures,"Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/outputs_concatenate_files/MMN_trialMeasures.csv")
+```
