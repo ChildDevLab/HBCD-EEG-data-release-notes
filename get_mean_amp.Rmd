@@ -131,3 +131,11 @@ for (x in dccids) {
 }
 ```
 
+
+output df as a csv
+```{r}
+write.csv(FACE_summary_sheet, paste(output_path, "FACE_ERPSummaryStats-withAmp.csv", sep = "")) 
+write.csv(MMN_summary_sheet, paste(output_path, "MMN_ERPSummaryStats-withAmp.csv", sep = ""))
+write.csv(VEP_summary_sheet, paste(output_path, "VEP_ERPSummaryStats-withAmp.csv", sep = ""))
+```
+
