@@ -9,39 +9,40 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Load in your paths
-directory path is where you have saved your summary stats or trial measures data
-output path is where you would like the outputs to get saved
+Load in your paths:
+directory_path is where you have saved your summary stats or trial measures data (the folder where the original data is downloaded to)
+output_path is where you would like the outputs to get saved
 ```{r}
 #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
 directory_path <- "Z:/Dropboxes/tmahesh/testing made outputs/"
 output_path <- "Z:/Dropboxes/tmahesh/data release csvs/"
 ```
 
-
-set cwd to file path, get ids 
+set cwd (current working directory) to file path, get a list of IDs
 ```{r}
 setwd(directory_path) 
 cwd <- directory_path
 dccids <- list.files()
 ```
 
-for each folder (ID), pull trial measures and summary stats
-create a mean score from trial measures per condition, and add that mean score to summary stats
+for each folder (ID), pull trial measures and summary stats. 
+from this, create a mean score from trial measures per condition, and add that mean score to summary stats
 ```{r}
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
   
+  #VEP - pull in trial measures and summary stats
   VEP_trial <- paste(cwd, processed_data, "/", x, "_ses-V03_task-VEP_ERPTrialMeasures.csv", sep="")
   VEP_sum <- paste(cwd, processed_data, "/", x, "_ses-V03_task-VEP_ERPSummaryStats.csv", sep="")
   if (file.exists(VEP_trial) & file.exists(VEP_sum)) {
     VEP_trial_sheet <- read.csv(VEP_trial)
     VEP_summary_sheet <- read.csv(VEP_sum)
-    cols <- grepl("MeanAmplitude", names(VEP_trial_sheet))
+    cols <- grepl("MeanAmplitude", names(VEP_trial_sheet)) 
     VEP_Amps <- VEP_trial_sheet[,cols] #list of just amp columns
     newcols <- colnames(VEP_Amps)
     VEP_summary_sheet[c(newcols)] <- NA
     
+    #paste into summary sheet
     for (i in 1:ncol(VEP_Amps)) {
       meanamp = mean(VEP_Amps[,i])
       VEP_summary_sheet[,colnames(VEP_Amps)[i]] = meanamp
@@ -50,6 +51,7 @@ for (x in dccids) {
     message(paste("VEP file not found for", x))
   }
   
+  #FACE - pull in trial measures and summary stats
   FACE_trial <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPTrialMeasures.csv", sep="")
   FACE_sum <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPSummaryStats.csv", sep="")
   if (file.exists(FACE_trial) & file.exists(FACE_sum)) {
@@ -59,7 +61,7 @@ for (x in dccids) {
     newcols <- colnames(FACE_trial_sheet[,cols])
     FACE_summary_sheet[c(newcols)] <- NA
 
-    #sep out by condition
+    #separate out by condition
     FACE_uprightInv = subset(FACE_trial_sheet, Condition == "uprightInv")
     FACE_uprightInv <- FACE_uprightInv[,cols] #list of just amp columns
     FACE_uprightObj = subset(FACE_trial_sheet, Condition == "uprightObj")
@@ -85,7 +87,7 @@ for (x in dccids) {
     message(paste("FACE file not found for", x))
   }
   
-  
+  #MMN - get trial measures and summary stats data
   MMN_trial <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERPTrialMeasures.csv", sep="")
   MMN_sum <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERPSummaryStats.csv", sep="")
   if (file.exists(MMN_trial) & file.exists(MMN_sum)) {
@@ -95,7 +97,7 @@ for (x in dccids) {
     newcols <- colnames(MMN_trial_sheet[,cols])
     MMN_summary_sheet[c(newcols)] <- NA
 
-    #sep out by condition
+    #separate out by condition
     MMN_standard = subset(MMN_trial_sheet, Condition == "standard")
     MMN_standard <- MMN_standard[,cols] #list of just amp columns
     MMN_deviant = subset(MMN_trial_sheet, Condition == "deviant")
@@ -120,7 +122,7 @@ for (x in dccids) {
 ```
 
 
-output df as a csv
+output dataframes containing derived mean amplitudes as a csv
 ```{r}
 write.csv(FACE_summary_sheet, paste(output_path, "FACE_ERPSummaryStats-withAmp.csv", sep = "")) 
 write.csv(MMN_summary_sheet, paste(output_path, "MMN_ERPSummaryStats-withAmp.csv", sep = ""))
