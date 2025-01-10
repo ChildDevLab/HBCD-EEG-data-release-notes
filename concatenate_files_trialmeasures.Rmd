@@ -14,24 +14,23 @@ necessary packages
 library(dplyr)
 ```
 
-Load in your paths
-directory path is where you have saved your summary stats or trial measures data
-output path is where you would like the outputs to get saved
+Load in your paths:
+directory_path is where you have saved your summary stats or trial measures data (the folder where the original data is downloaded to)
+output_path is where you would like the outputs to get saved
 ```{r}
 #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
 directory_path <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_8.14/" 
 output_path <- "Z:/Dropboxes/tmahesh/data release csvs/"
 ```
 
-
-set cwd to file path, get ids 
+set cwd (current working directory) to file path, get a list of IDs 
 ```{r}
 setwd(directory_path)
 cwd <- directory_path
 dccids <- list.files()
 ```
 
-create sheets
+create sheets - these are the sheets this script will output
 ```{r}
 FACE_trialmeasures <- NULL
 MMN_trialmeasures <- NULL
@@ -40,6 +39,7 @@ MMN_trialmeasures <- NULL
 for each folder (ID), pull trial stats by task and condition
 #change names of files to new names!!!
 ```{r}
+#for x (each ID), pull out the trial measure data (by task) and paste it into a new sheet, storing ID in a new column
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
   
@@ -81,7 +81,7 @@ for (x in dccids) {
 
 ```
 
-output df as a csv
+output the dataframes containing concatenated summary stats as a csv
 ```{r}
 write.csv(FACE_trialmeasures, paste(output_path, "FACE_trialMeasures.csv", sep = "")) 
 write.csv(MMN_trialmeasures, paste(output_path, "MMN_trialMeasures.csv", sep = ""))
