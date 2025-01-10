@@ -85,18 +85,6 @@ for (x in dccids) {
     message(paste("FACE file not found for", x))
   }
   
-  # 
-  # MMN_summary_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERP-summaryStats.csv", sep="")
-  # if (file.exists(MMN_summary_file)) {
-  #   MMN_summary_sheet <- read.csv(MMN_summary_file)
-  #   for (i in 1:nrow(MMN_summary_sheet)) {
-  #     MMN_summary_sheet$ID <- x
-  #     row <- MMN_summary_sheet[i, , drop = FALSE]
-  #     MMN_SME <- rbind(MMN_SME, row)
-  #   }
-  # } else {
-  #   message(paste("MMN file not found for", x))
-  # }
   
   MMN_trial <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERPTrialMeasures.csv", sep="")
   MMN_sum <- paste(cwd, processed_data, "/", x, "_ses-V03_task-MMN_ERPSummaryStats.csv", sep="")
