@@ -1,4 +1,4 @@
-# HBCD-data-release-notes
+# HBCD-EEG-data-release-notes
 README instructions and scripts for working with the EEG data in the January 15 HBCD public data release.
 
 These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the individual-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
@@ -56,9 +56,9 @@ This script concatenate all summary statistics (SME) across participants and out
 To use this script: 
 1. Open the script using RStudio. 
 2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 23. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 4. At the top right of the script, click the down arrow next to the "Run" icon. 
 5. At the bottom of the list, click "Run All" 
 6. Your output sheets can be seen in the folder provided on line 23.
@@ -69,9 +69,9 @@ This script concatenates all ERP relevant mean amplitudes at the individual tria
 To use this script: 
 1. Open the script using RStudio. 
 2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 23. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 4. At the top right of the script, click the down arrow next to the "Run" icon. 
 5. At the bottom of the list, click "Run All" 
 6. Your output sheets can be seen in the folder provided on line 23.
@@ -82,9 +82,9 @@ This script filters concatenated data into task specific conditions (upright, in
 To use this script: 
 1. Open the script using RStudio. 
 2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 17. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 18. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\' to '/'.
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 4. At the top right of the script, click the down arrow next to the "Run" icon. 
 5. At the bottom of the list, click "Run All" 
 6. Your output sheets can be seen in the folder provided on line 23.
