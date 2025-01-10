@@ -38,6 +38,8 @@ FACE_SME <- NULL
 FACE_trial <- NULL
 MMN_SME <- NULL
 MMN_trial <- NULL
+VEP_trial <- NULL
+VEP_SME <- NULL
 ```
 
 for each folder (ID), pull summary stats by task and condition
@@ -80,6 +82,18 @@ for (x in dccids) {
   } else {
     message(paste("MMN file not found for", x))
   }
+  
+  VEP_summary_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-VEP_ERP-summaryStats.csv", sep="")
+  if (file.exists(VEP_summary_file)) {
+    VEP_summary_sheet <- read.csv(VEP_summary_file)
+    for (i in 1:nrow(VEP_summary_sheet)) {
+      VEP_summary_sheet$ID <- x
+      row <- VEP_summary_sheet[i, , drop = FALSE]
+      VEP_SME <- rbind(VEP_SME, row)
+    }
+  } else {
+    message(paste("VEP file not found for", x))
+  }
 }
 
 ```
@@ -90,5 +104,6 @@ output df as a csv
 write.csv(FACE_SME, paste(output_path, "FACE_SME.csv", sep="")) #SM change these names to where you would like to output the summary sheets, keeping the "{TASK}_SME.csv"
 write.csv(RS_power,paste(output_path,"RS_power.csv", sep=""))
 write.csv(MMN_SME,paste(output_path, "MMN_SME.csv", sep = ""))
+write.csv(VEP_SME,paste(output_path, "VEP_SME.csv", sep = ""))
 ```
 
