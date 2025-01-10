@@ -9,9 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Load in your paths
-directory path is where you have saved your summary stats or trial measures data
-output path is where you would like the outputs to get saved
+Load in your paths:
+directory_path is where you have saved your summary stats or trial measures data (the output of concatenate_files scripts)
+output_path is where you would like the outputs to get saved
 ```{r}
 #set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
 directory_path <- "Z:/Dropboxes/tmahesh/data release csvs/"
@@ -20,12 +20,11 @@ output_path <- "Z:/Dropboxes/tmahesh/data release csvs/"
 
 
 Load in files for each task with conditions (FACE, MMN)
-Note: You can either load in concatenated summary stats or concatenated trial measures csvs
+Note: You can either load in concatenated summary stats or concatenated trial measures csvs. To do this, you wil need to change the "FACE_{...}" and "MMN_{...}" names
 ```{r}
 Face_sumstats <- read.csv(paste(directory_path, "FACE_SME.csv", sep = ""))
 MMN_sumstats <- read.csv(paste(directory_path, "MMN_SME.csv", sep = ""))
 ```
-
 
 subset file by conditions for FACE
 ```{r}
@@ -39,7 +38,6 @@ FACE_inverted = subset(Face_sumstats, Condition == "inverted")
 FACE_inverted = subset(FACE_inverted, select = -X)
 ```
 
-
 subset file by conditions for MMN
 ```{r}
 MMN_standard = subset(MMN_sumstats, Condition == "standard")
@@ -50,7 +48,7 @@ MMN_predev = subset(MMN_sumstats, Condition == "predeviant")
 MMN_predev = subset(MMN_predev, select = -X)
 ```
 
-write out tables
+write out FACE tables as a csv
 ```{r}
 write.csv(FACE_uprightInv, paste(output_path, "FACE_uprightInv.csv", sep = ""))
 write.csv(FACE_uprightObj, paste(output_path, "FACE_uprightObj.csv", sep= ""))
@@ -58,6 +56,7 @@ write.csv(FACE_object, paste(output_path, "FACE_object.csv", sep = ""))
 write.csv(FACE_inverted, paste(output_path, "FACE_inverted.csv", sep = ""))
 ```
 
+write out MMN tables as a csv
 ```{r}
 
 write.csv(MMN_standard, paste(output_path, "MMN_standard.csv", sep = ""))
@@ -72,4 +71,5 @@ Condition: type of condition saved
 NTrials: how many trials were saved for that participant
 ID: participant ID
 SME: Standard measurement error (varying by task, time windows, and region of interest)
+##SM - we will want to pull this information into the instructions doc too eventually 
 
