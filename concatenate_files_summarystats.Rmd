@@ -96,7 +96,6 @@ for (x in dccids) {
 
 ```
 
-
 output the dataframes containing concatenated summary stats as a csv
 ```{r}
 write.csv(FACE_SME, paste(output_path, "FACE_SME.csv", sep="")) #SM change these names to where you would like to output the summary sheets, keeping the "{TASK}_SME.csv" and "sep="""

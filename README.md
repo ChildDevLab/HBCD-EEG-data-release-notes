@@ -7,6 +7,7 @@ This repository contains 3 scripts:
 1. concatenate_files_summary.Rmd: A script to concatenate summary statistics (power and SME) across participants for the Resting State, FACE, and MMN Tasks.
 2. concatenate_files_trialmeasures.Rmd: A script to concatenate ERP relevant mean amplitudes at the individual trial level across participants for the FACE and MMN Tasks.
 3. separate_conditions.Rmd: A script to filter concatenated data into task specific conditions (upright, inverted, object for FACE and standard, deviant, pre-deviant for MMN).
+4. get_mean_amp.Rmd: A script to pull the trial measure and summary stats data for each participant, calculate mean amplitude at each time window of interest, and combine into one csv.
 
 The user will need RStatistics and RStudio to be able to run these scripts. Below are instructions for downloading these interfaces. 
 
@@ -87,9 +88,19 @@ NOTE: if you are using this script on a Windows computer, you will need to chang
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 4. At the top right of the script, click the down arrow next to the "Run" icon. 
 5. At the bottom of the list, click "Run All" 
-6. Your output sheets can be seen in the folder provided on line 23.
+6. Your output sheets can be seen in the folder provided on line 18.
 
 4. get_mean_amp.Rmd: 
-This script pulls the trial measure data for each participant and calculates mean amplitude at each time window of interest. 
+This script pulls the trial measure and summary stats data for each participant, calculates mean amplitude at each time window of interest, and combines all three into a csv. 
+
+To use this script: 
+1. Open the script using RStudio. 
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 17. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
+3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 18. 
+NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
+4. At the top right of the script, click the down arrow next to the "Run" icon. 
+5. At the bottom of the list, click "Run All" 
+6. Your output sheets can be seen in the folder provided on line 23.
 
 
