@@ -3,7 +3,7 @@ README instructions and scripts for working with the EEG data in the January 15 
 
 These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the individual-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
 
-This repository contains 3 scripts: 
+This repository contains 4 scripts: 
 1. concatenate_files_summary.Rmd: A script to concatenate summary statistics (power and SME) across participants for the Resting State, FACE, and MMN Tasks.
 2. concatenate_files_trialmeasures.Rmd: A script to concatenate ERP relevant mean amplitudes at the individual trial level across participants for the FACE and MMN Tasks.
 3. separate_conditions.Rmd: A script to filter concatenated data into task specific conditions (upright, inverted, object for FACE and standard, deviant, pre-deviant for MMN).
