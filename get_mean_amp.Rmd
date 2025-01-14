@@ -118,14 +118,11 @@ for (x in dccids) {
   } else {
     message(paste("MMN file not found for", x))
   }
+  
+  #output dataframes containing derived mean amplitudes as a csv
+  write.csv(FACE_summary_sheet, paste(output_path, paste(x, "task-FACE_ERPSummaryStats-withAmp.csv", sep="_"), sep = "")) 
+  write.csv(MMN_summary_sheet, paste(output_path, paste(x, "task-MMN_ERPSummaryStats-withAmp.csv", sep="_"), sep = ""))
+  write.csv(VEP_summary_sheet, paste(output_path, paste(x, "task-VEP_ERPSummaryStats-withAmp.csv", sep="_"), sep = ""))
 }
-```
-
-
-output dataframes containing derived mean amplitudes as a csv
-```{r}
-write.csv(FACE_summary_sheet, paste(output_path, "FACE_ERPSummaryStats-withAmp.csv", sep = "")) 
-write.csv(MMN_summary_sheet, paste(output_path, "MMN_ERPSummaryStats-withAmp.csv", sep = ""))
-write.csv(VEP_summary_sheet, paste(output_path, "VEP_ERPSummaryStats-withAmp.csv", sep = ""))
 ```
 
