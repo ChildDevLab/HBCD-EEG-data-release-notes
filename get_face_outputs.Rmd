@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
 ```
 
 Load in your paths:
@@ -14,8 +15,8 @@ directory_path is where you have saved your summary stats or trial measures data
 output_path is where you would like the outputs to get saved
 ```{r}
 #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
-directory_path <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_Outputs/V03/"
-output_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_cbrain/"
+directory_path <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_Outputs/DataReleaseIDs/"
+output_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_cbrain_datarelease_deid/"
 ```
 
 set cwd (current working directory) to file path, get a list of IDs
@@ -38,11 +39,28 @@ for each folder (ID), pull summary stats by task and condition
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
   
- FACE_ERP_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERP-summaryStats.csv", sep="")
+ FACE_ERP_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-FACE_ERPSummaryStats.csv", sep="")
   if (file.exists(FACE_ERP_file)) {
     FACE_ERP_sheet <- read.csv(FACE_ERP_file)
     for (i in 1:nrow(FACE_ERP_sheet)) {
-      FACE_ERP_sheet$ID <- x #paste the DCCID for each row into MMN_ERP_sheet
+      FACE_ERP_sheet$ID <- x #paste the DCCID for each row into FACE_ERP_sheet
+      FACE_ERP_sheet <- FACE_ERP_sheet %>%
+        rename(SME_N290_p8 = 3,
+               Peak_N290_p8 = 4,
+               Latency_N290_p8 = 5, 
+               MeanAmp_N290_p8 = 6, 
+               SME_P1 = 7,
+               Peak_P1 = 8,
+               Latency_P1 = 9, 
+               MeanAmp_P1 = 10,
+               SME_N290_Oz = 11,
+               Peak_N290_Oz = 12,
+               Latency_N290_Oz = 13, 
+               MeanAmp_N290_Oz = 14,
+               SME_P400 = 15,
+               Peak_P400 = 16,
+               Latency_P400 = 17, 
+               MeanAmp_P400 = 18)
       row <- FACE_ERP_sheet[i, , drop = FALSE]
       FACE_ERP <- rbind(FACE_ERP, row)
     }
