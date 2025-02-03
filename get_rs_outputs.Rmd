@@ -14,8 +14,8 @@ directory_path is where you have saved your summary stats or trial measures data
 output_path is where you would like the outputs to get saved
 ```{r}
 #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
-directory_path <- "Z:/Dropboxes/tmahesh/testing made outputs/"
-output_path <- "Z:/Dropboxes/tmahesh/data release csvs/"
+directory_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_files/"
+output_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_output/"
 ```
 
 set cwd (current working directory) to file path, get a list of IDs
@@ -38,7 +38,7 @@ for each folder (ID), pull summary stats by task and condition
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
   
-  RS_power_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-RS_powerSummaryStats.csv", sep="")
+  RS_power_file <- paste(cwd, x,"/", processed_data, "/", x, "_ses-V03_task-RS_Power-summaryStats.csv", sep="")
   if (file.exists(RS_power_file)) {
     RS_power_sheet <- read.csv(RS_power_file)
     for (i in 1:nrow(RS_power_sheet)) {
