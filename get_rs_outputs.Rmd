@@ -32,7 +32,6 @@ RS_power <- NULL
 
 
 for each folder (ID), pull summary stats by task and condition
-#change names of files to new names!!!
 ```{r}
 #for x (each ID), pull out the RS summary stats data and paste it into a new sheet, storing ID in a new column
 for (x in dccids) {
@@ -50,7 +49,6 @@ for (x in dccids) {
   }
   
 }
-
 ```
 
 output the dataframe containing concatenated summary stats as a csv

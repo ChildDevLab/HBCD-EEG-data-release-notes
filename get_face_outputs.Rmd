@@ -33,9 +33,8 @@ FACE_ERP <- NULL
 
 
 for each folder (ID), pull summary stats by task and condition
-#change names of files to new names!!!
 ```{r}
-#for x (each ID), pull out the RS summary stats data and paste it into a new sheet, storing ID in a new column
+#for x (each ID), pull out the FACE ERP data and paste it into a new sheet, storing ID in a new column
 for (x in dccids) {
   processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
   
