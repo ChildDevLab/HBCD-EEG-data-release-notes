@@ -1,13 +1,10 @@
 # HBCD-EEG-data-release-notes
-README instructions and scripts for working with the EEG data in the January 15 HBCD public data release.
+README instructions and scripts for working with the EEG data in the March 1 HBCD public data release.
 
 These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the individual-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
 
 This repository contains 4 scripts: 
-1. concatenate_files_summary.Rmd: A script to concatenate summary statistics (power and SME) across participants for the Resting State, FACE, and MMN Tasks.
-2. concatenate_files_trialmeasures.Rmd: A script to concatenate ERP relevant mean amplitudes at the individual trial level across participants for the FACE and MMN Tasks.
-3. separate_conditions.Rmd: A script to filter concatenated data into task specific conditions (upright, inverted, object for FACE and standard, deviant, pre-deviant for MMN).
-4. get_mean_amp.Rmd: A script to pull the trial measure and summary stats data for each participant, calculate mean amplitude at each time window of interest, and combine into one csv.
+*update this when scripts are finalized*
 
 The user will need RStatistics and RStudio to be able to run these scripts. Below are instructions for downloading these interfaces. 
 
@@ -48,6 +45,7 @@ Installing RStudio Desktop:
 Now that you have these software, you will be able to run the scripts on our repository to manipulate the provided participant level data. First, we will outline how to setup your folder structure. 
 
 #SM later fill this in based on how the EEG data is provided
+#SM this instruction set will be the same but instead would be one single script
 
 The following are instructions on how to run each of the provided scripts. 
 
@@ -102,5 +100,7 @@ NOTE: if you are using this script on a Windows computer, you will need to chang
 4. At the top right of the script, click the down arrow next to the "Run" icon. 
 5. At the bottom of the list, click "Run All" 
 6. Your output sheets can be seen in the folder provided on line 23.
+
+#SM add here: description of the outputs, notes about ERPs, ROIs, and time windows selected
 
 
