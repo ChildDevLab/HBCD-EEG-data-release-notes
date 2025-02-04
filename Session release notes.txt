@@ -1,0 +1,6 @@
+A set of raw .set EEG files have been released with HBCD EEG data but should be excluded from analyses. These .set files have been corrupted and will not open with EEGLAB. 
+- sub-6829415076: FACE, MMN, RS
+- sub-8304538582: RS
+- sub-3354133883: RS
+
+
