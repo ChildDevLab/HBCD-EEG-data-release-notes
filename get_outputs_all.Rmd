@@ -52,6 +52,7 @@ for (x in dccids) {
                Mean_Power_oz = 3)
       row <- RS_power_sheet[i, , drop = FALSE]
       RS_power <- rbind(RS_power, row)
+      message(paste("Compiling", x))
     }
   } else {
     message(paste("RS Power file not found for", x))
@@ -86,6 +87,7 @@ for (x in dccids) {
                MeanAmp_MMR_fcz = 14)
       row <- MMN_ERP_sheet[i, , drop = FALSE]
       MMN_ERP <- rbind(MMN_ERP, row)
+      message(paste("Compiling", x))
     }
   } else {
     message(paste("MMN ERP file not found for", x))
@@ -124,6 +126,7 @@ for (x in dccids) {
                MeanAmp_P400 = 18)
       row <- FACE_ERP_sheet[i, , drop = FALSE]
       FACE_ERP <- rbind(FACE_ERP, row)
+      message(paste("Compiling", x))
     }
   } else {
     message(paste("FACE ERP file not found for", x))
@@ -158,6 +161,7 @@ for (x in dccids) {
                MeanAmp_N2 = 14)
       row <- VEP_ERP_sheet[i, , drop = FALSE]
       VEP_ERP <- rbind(VEP_ERP, row)
+      message(paste("Compiling", x))
     }
   } else {
     message(paste("VEP ERP file not found for", x))
