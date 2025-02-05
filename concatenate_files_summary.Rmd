@@ -172,10 +172,10 @@ for (x in dccids) {
 
 output the dataframe containing concatenated power data/summary stats as a csv
 ```{r}
-write.csv(RS_power,paste(output_path,"RS_power.csv", sep="")) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "RS_Power.csv"
-write.csv(MMN_ERP,paste(output_path,"MMN_ERP.csv", sep="")) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "MMN_ERP.csv"
-write.csv(FACE_ERP,paste(output_path,"FACE_ERP.csv", sep="")) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "FACE_ERP.csv"
-write.csv(VEP_ERP,paste(output_path,"VEP_ERP.csv", sep="")) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "VEP_ERP.csv"
+write.csv(RS_power,paste(output_path,"RS_power.csv", sep=""), row.names=FALSE) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "RS_Power.csv"
+write.csv(MMN_ERP,paste(output_path,"MMN_ERP.csv", sep=""), row.names=FALSE) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "MMN_ERP.csv"
+write.csv(FACE_ERP,paste(output_path,"FACE_ERP.csv", sep=""), row.names=FALSE) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "FACE_ERP.csv"
+write.csv(VEP_ERP,paste(output_path,"VEP_ERP.csv", sep=""), row.names=FALSE) #Feel free to change the name of the file to however you would prefer it to be named, as a general example we have chosen "VEP_ERP.csv"
 ```
 
 Output Guide:
