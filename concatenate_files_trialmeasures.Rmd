@@ -97,6 +97,10 @@ for (x in dccids) {
 
 output the dataframes containing concatenated trial measures as a csv
 ```{r}
-write.csv(FACE_trialmeasures, paste(output_path, "FACE_trialMeasures.csv", sep = ""), row.names=FALSE) 
-write.csv(MMN_trialmeasures, paste(output_path, "MMN_trialMeasures.csv", sep = ""), row.names=FALSE)
+#pull date as st 
+st=format(Sys.time(), "%Y-%m-%d")
+
+#output dfs
+write.csv(FACE_trialmeasures, paste(output_path, "FACE_trialMeasures_V03_", st, ".csv", sep = ""), row.names=FALSE) 
+write.csv(MMN_trialmeasures, paste(output_path, "MMN_trialMeasures_V03_", st, ".csv", sep = ""), row.names=FALSE)
 ```
