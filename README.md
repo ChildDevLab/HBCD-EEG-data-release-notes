@@ -60,7 +60,7 @@ Now, we will outline how to setup your folder structure.
 
 How to set up your folder structure: 
 
-#SM later fill this in based on how the EEG data is provided
+##SM later fill this in based on how the EEG data is provided##
 
 Now, you're ready to The following are instructions on how to run each of the provided scripts. 
 
@@ -69,11 +69,11 @@ This script concatenate all summary statistics (SME, and power for RS) across pa
 
 To use this script: 
 1. Open the script using RStudio. 
-2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 18. **Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name**
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 18. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
 
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 
-3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 19. **Be sure your output path ends in a '/', to ensure the files are out put to the correct location with the correct file name**
+3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 19. *Be sure your output path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
 
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 
@@ -86,11 +86,11 @@ This script concatenates all ERP relevant mean amplitudes at the individual tria
 
 To use this script: 
 1. Open the script using RStudio. 
-2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. **Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name**
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
 
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 
-3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 23. **Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name**
+3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 23. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
 
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 
