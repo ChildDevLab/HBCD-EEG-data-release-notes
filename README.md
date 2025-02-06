@@ -1,10 +1,11 @@
 # HBCD-EEG-data-release-notes
 README instructions and scripts for working with the EEG data in the March 1 HBCD public data release.
 
-These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the individual-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
+These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the subject-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
 
-This repository contains 4 scripts: 
-*update this when scripts are finalized*
+This repository contains 2 scripts: 
+1. concatenate_files_summary.Rmd: This script will pull the summary statistics (or power, for RS) .csv for each subject and concatenate them into a single, task specific summary statistics/power .csv. 
+2. concatenate_files_trialmeasures.Rmd: This script will pull the trial measures .csv for each subject and concatenate them into a single, task specific trial level .csv.
 
 The user will need RStatistics and RStudio to be able to run these scripts. Below are instructions for downloading these interfaces. 
 
@@ -24,15 +25,19 @@ To install R on Windows OS:
 Installing R on MacOS X:
 Installing R on MacOS X is very similar to installing R on Window OS. The difference is the file format that you have to download. The procedure is as follows:
 
+*add note about version based on how old the mac is*
+
 1. Go to the CRAN website (https://cran.r-project.org/).
-2. Click on "Download R for macOS".
-3. Download the latest version of the R GUI under (.pkg file) under "Latest release". You can download much older versions by following the "old directory" or "CRAN archive" links.
+2. Click on "Download R for macOS". 
+3. Download the latest version of the R GUI under (.pkg file) under "Latest release". You can download much older versions by following the "old directory" or "CRAN archive" links. *NOTE* If you have Mac OS 12 or earlier, you will need to download "For older Intel Macs:"
 4. From your downloads folder, run the .pkg file, and follow the installation instructions.
 
 
 Download RStudio: 
 
 Installing RStudio Desktop:
+
+*add note about version*
 
 1. Go to the RStudio website (https://posit.co/download/rstudio-desktop/).
 2. Scroll down to the "All Installers and Tarballs" section. 
@@ -44,13 +49,17 @@ Installing RStudio Desktop:
 
 Now that you have these software, you will be able to run the scripts on our repository to manipulate the provided participant level data. First, we will outline how to setup your folder structure. 
 
+*insert instructions for downloading the repo*
+
+First, you will need to download the repository to your local computer. This can be done in a number of ways, but for a first time user we recommend 
+
 #SM later fill this in based on how the EEG data is provided
 #SM this instruction set will be the same but instead would be one single script
 
 The following are instructions on how to run each of the provided scripts. 
 
 1. concatenate_files_summary.Rmd:
-This script concatenate all summary statistics (SME) across participants and outputs a sheet for the Resting State, FACE, and MMN Tasks. 
+This script concatenate all summary statistics (SME, and power for RS) across participants and outputs a sheet for the Resting State, FACE, MMN, and VEP Tasks. The output relabels these statistics to reflect the ERP components and ROIs of interest, and is separated by task.
 
 To use this script: 
 1. Open the script using RStudio. 
@@ -74,34 +83,6 @@ NOTE: if you are using this script on a Windows computer, you will need to chang
 4. At the top right of the script, click the down arrow next to the "Run" icon. 
 5. At the bottom of the list, click "Run All" 
 6. Your output sheets can be seen in the folder provided on line 23.
-
-3. separate_conditions.Rmd: 
-This script filters concatenated data into task specific conditions (upright, inverted, object for FACE and standard, deviant, pre-deviant for MMN).
-
-To use this script: 
-1. Open the script using RStudio. 
-2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 17. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
-3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 18. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
-4. At the top right of the script, click the down arrow next to the "Run" icon. 
-5. At the bottom of the list, click "Run All" 
-6. Your output sheets can be seen in the folder provided on line 18.
-
-4. get_mean_amp.Rmd: 
-This script pulls the trial measure and summary stats data for each participant, calculates mean amplitude at each time window of interest, and combines all three into a csv. 
-
-To use this script: 
-1. Open the script using RStudio. 
-2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 17. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
-3. Provide an output path (the path to the folder where you would like the outputs to end up) on line 18. 
-NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
-4. At the top right of the script, click the down arrow next to the "Run" icon. 
-5. At the bottom of the list, click "Run All" 
-6. Your output sheets can be seen in the folder provided on line 23.
-
-#SM add here: description of the outputs, notes about ERPs, ROIs, and time windows selected
 
 Descriptions of each task's ERP components, time windows (by age), and ROI are available in the excel file on the GitHub repository, and below: 
 
