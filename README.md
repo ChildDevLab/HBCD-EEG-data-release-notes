@@ -1,4 +1,5 @@
-##HBCD-EEG-data-release-notes##
+**HBCD-EEG-data-release-notes**
+
 README instructions and scripts for working with the EEG data in the March 1 HBCD public data release.
 
 These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the subject-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
@@ -81,7 +82,7 @@ NOTE: if you are using this script on a Windows computer, you will need to chang
 5. At the bottom of the list, click "Run All" 
 6. Your output sheets can be seen in the folder provided on line 23.
 
-2. concatenate_files_trialmeasures.Rmd:
+2. **concatenate_files_trialmeasures.Rmd**:
 This script concatenates all ERP relevant mean amplitudes at the individual trial level across participants for the FACE and MMN Tasks.
 
 To use this script: 
