@@ -1,6 +1,9 @@
-A set of raw .set EEG files have been released with HBCD EEG data but should be excluded from analyses. These .set files have been corrupted and will not open with EEGLAB. 
+A number of raw .set EEG files have been released with HBCD EEG data but should be excluded from analyses. 
+
+These .set files have been corrupted and will not open with EEGLAB: 
 - sub-6829415076: FACE, MMN, RS
 - sub-8304538582: RS
 - sub-3354133883: RS
 
-
+Additionally, we've identified an artifact related to the stim tracker pulse in the dataset for the ID below. Analyses with this ID should avoid electrode E55, as the artifact is most pronounced in this and the surrounding electrodes. {note Jess's document}
+- sub-1248914553: FACE, MMN, VEP

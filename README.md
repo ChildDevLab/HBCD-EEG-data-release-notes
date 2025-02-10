@@ -40,7 +40,7 @@ Installing RStudio Desktop:
 2. Scroll down to the "All Installers and Tarballs" section. 
 3. Click on the download link specific to your operating system (OS). 
 
-NOTE: If you have Mac OS 12 or earlier, you will need to download an older, unsupported version of R Studio. Visit https://forum.posit.co/t/rstudio-desktop-releases-on-unsupported-versions-of-macos/176074 and select the installer that corresponds to your OS version
+NOTE: If you have Mac OS 12 or earlier, you will need to download an older, unsupported version of R Studio. Visit https://forum.posit.co/t/rstudio-desktop-releases-on-unsupported-versions-of-macos/176074 and select the installer that corresponds to your OS version.
 
 4. From your downloads folder, run the RStudio Executable file (.exe) for Windows OS or the Apple Image Disk file (.dmg) for macOS X.
 5. Follow the installation instructions to complete RStudio Desktop installation.
