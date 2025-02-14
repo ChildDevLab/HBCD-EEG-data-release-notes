@@ -1,3 +1,5 @@
+For the March data release, all files will not include the impedances and electrodes files. These will be released in a future interim release. If you have questions about this, please reach out to eegdata@umd.edu.
+
 A number of raw .set EEG files have been released with HBCD EEG data but should be excluded from analyses. 
 
 These .set files have been corrupted and will not open with EEGLAB: 
