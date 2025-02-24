@@ -124,3 +124,11 @@ Descriptions of each task's ERP components, time windows (by age), and ROI are a
 | VEP  | N1        | 40-79       | oz   | 6-9 |
 | VEP  | P1        | 80-120      | oz   | 6-9 |
 | VEP  | N2        | 121-170     | oz   | 6-9 |
+
+Please direct any inquiries regarding this repository, use of the associated scripts, or the HBCD EEG data release to eegdata@umd.edu. 
+Authorship for this repository is as follows: 
+- Savannah McNair, smcnair1@umd.edu, @savmcnair (GitHub username)
+- Trisha Maheshwari, tmahesh@umd.edu, @trisham16 (GitHub username)
+- Whitney Kasenetz, kasenetz@umd.edu, @kasenetz (GitHub username) 
+- Jess Norris, jnorri10@umd.edu, @jnorri10 (GitHub username) 
+- Child Development Lab affiliates, @ChildDevLab (GitHub account)
