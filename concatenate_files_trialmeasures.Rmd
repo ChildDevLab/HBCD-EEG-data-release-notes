@@ -19,8 +19,8 @@ directory_path is where you have saved your summary stats or trial measures data
 output_path is where you would like the outputs to get saved
 ```{r}
 #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
-directory_path <- "X:/Projects/hbcd/EEG/Main_Study/CBRAIN_Outputs/DataReleaseIDs/"
-output_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_cbrain_datarelease_deid/"
+directory_path <- "X:/Projects/hbcd/EEG/Main_Study/Lasso output/bids/derivatives/made/"
+output_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_lasso_deid/"
 ```
 
 set cwd (current working directory) to file path, get a list of IDs 
@@ -34,6 +34,7 @@ create sheets - these are the sheets this script will output
 ```{r}
 FACE_trialmeasures <- NULL
 MMN_trialmeasures <- NULL
+VEP_trialmeasures <- NULL
 ```
 
 for each folder (ID), pull trial stats by task and condition
@@ -106,10 +107,41 @@ for (x in dccids) {
 }
 ```
 
+VEP: 
+```{r}
+#for x (each ID), pull out the trial measure data (by task) and paste it into a new sheet, storing ID in a new column
+for (x in dccids) {
+  processed_data <- paste(x, "/ses-V03/eeg/processed_data", sep="")
+  VEP_trialmeasures_file <- paste(cwd, processed_data, "/", x, "_ses-V03_task-VEP_ERPTrialMeasures.csv", sep="")
+  if (file.exists(VEP_trialmeasures_file)) {
+    VEP_trialmeasures_sheet <- read.csv(VEP_trialmeasures_file)
+    message(paste("Compiling", x))
+    for (i in 1:nrow(VEP_trialmeasures_sheet)) {
+      #VEP_trialmeasures_sheet$ID <- x
+      VEP_trialmeasures_sheet <- VEP_trialmeasures_sheet %>%
+        rename(MeanAmp_N1_t7t8 = 1,
+               Peak_N1_oz = 2,
+               Latency_N1_oz = 3,
+               MeanAmp_P1_oz = 7,
+               Peak_P1_oz = 8,
+               Latency_P1_oz = 9,
+               MeanAmp_N2_oz = 10,
+               Peak_N2_oz = 11,
+               Latency_N2_oz = 12)
+      row <- VEP_trialmeasures_sheet[i, , drop = FALSE]
+      VEP_trialmeasures <- rbind(VEP_trialmeasures, row)
+    }
+  } else {
+    message(paste("VEP file not found for", x))
+  }
+}
+```
+
 reorder columns
 ```{r}
 FACE_trialmeasures <- FACE_trialmeasures[, c(4,5,6,1,2,3,7,8,9,10,11,12,13,14,15,16,17,18)]
 MMN_trialmeasures <- MMN_trialmeasures[, c(4,5,6,1,2,3,7,8,9,10,11,12)]
+VEP_trialmeasures <- VEP_trialmeasures[, c(4,5,6,1,2,3,7,8,9,10,11,12)]
 ```
 
 
@@ -121,4 +153,5 @@ st=format(Sys.time(), "%Y-%m-%d")
 #output dfs
 write.csv(FACE_trialmeasures, paste(output_path, "FACE_trialMeasures_V03_", st, ".csv", sep = ""), row.names=FALSE) 
 write.csv(MMN_trialmeasures, paste(output_path, "MMN_trialMeasures_V03_", st, ".csv", sep = ""), row.names=FALSE)
+write.csv(VEP_trialmeasures, paste(output_path, "VEP_trialMeasures_V03_", st, ".csv", sep = ""), row.names=FALSE)
 ```

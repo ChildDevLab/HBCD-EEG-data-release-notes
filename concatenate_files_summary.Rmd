@@ -16,7 +16,7 @@ output_path is where you would like the outputs to get saved
 ```{r}
 #SM set to the location you downloaded the EEG files to. If you are using a Windows computer, you will need to change the direction of the slashes from '\' to '/'
 directory_path <- "X:/Projects/hbcd/EEG/Main_Study/Lasso output/bids/derivatives/made/"
-output_path <- "Z:/Dropboxes/whitneyk/TestConcatenationScripts"
+output_path <- "Z:/Dropboxes/SMcNair/SMcNair_Playground/HBCD/Data Release/DataRelease_Githhub/test_lasso_deid/"
 ```
 
 set cwd (current working directory) to file path, get a list of IDs
