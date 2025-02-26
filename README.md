@@ -128,3 +128,5 @@ Authorship for this repository is as follows:
 - Whitney Kasenetz, kasenetz@umd.edu, @kasenetz (GitHub username) 
 - Jess Norris, jnorri10@umd.edu, @jnorri10 (GitHub username) 
 - Child Development Lab affiliates, @ChildDevLab (GitHub account)
+
+To copy the full citation of this repository, click "Cite this repository" in the top right of the GitHub repository, under "About".
