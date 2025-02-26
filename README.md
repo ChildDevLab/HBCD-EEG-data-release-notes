@@ -2,7 +2,7 @@
 
 README instructions and scripts for working with the EEG data in the March 1 HBCD public data release.
 
-These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the subject-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. 
+These instructions will allow the user to extract a full derivative dataset (of summary statistics and trial measures) from the subject-level file based download, found under "Query Data" > "Download File Based Data" on the Lasso interface. For instructions on how to download data on the Lasso interface, please visit https://hbcd-docs.readthedocs.io/en/latest/data_access/querytool/ .
 
 This repository contains 2 scripts: 
 1. **concatenate_files_summary.Rmd**: This script will pull the summary statistics (or power, for RS) .csv for each subject and concatenate them into a single, task specific summary statistics/power .csv. 
@@ -57,11 +57,7 @@ Downloading the GitHub repository:
 4. Navigate to your downloads folder. Select the zipped "HBCD-EEG-data-release-notes-main" folder by left clicking. Right click. 
 5. Select the "Extract all" option from the drop down menu. This will unzip the repository to your downloads folder. 
 
-Now, we will outline how to setup your folder structure. 
-
-How to set up your folder structure: 
-
-##SM later fill this in based on how the EEG data is provided##
+Now, we will outline how to navigate your folder structure. The EEG data will be downloaded to a folder within a folder of all other outputs you download off of Lasso. To navigate to the EEG data to be used in the below scripts, in your Lasso download, navigate to the "bids > derivatives > made" folder. This should be a folder with folders named "sub-{unique ID}". Use the path to this folder as the directory path in each of the provided R Studio scripts.
 
 Now, you're ready to The following are instructions on how to run each of the provided scripts. 
 
@@ -70,7 +66,7 @@ This script concatenate all summary statistics (SME, and power for RS) across pa
 
 To use this script: 
 1. Open the script using RStudio. 
-2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 18. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored; instructions for how to navigate to this folder are above) on line 18. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
 
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 
@@ -87,7 +83,7 @@ This script concatenates all ERP relevant mean amplitudes at the individual tria
 
 To use this script: 
 1. Open the script using RStudio. 
-2. Provide a directory path (the path to the folder where the downloaded EEG data is stored) on line 22. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
+2. Provide a directory path (the path to the folder where the downloaded EEG data is stored; instructions for how to navigate to this folder are above) on line 22. *Be sure your directory path ends in a '/', to ensure the files are out put to the correct location with the correct file name*
 
 NOTE: if you are using this script on a Windows computer, you will need to change the direction of the slashes from '\\' to '/'.
 
