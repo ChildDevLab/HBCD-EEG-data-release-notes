@@ -1,6 +1,6 @@
 For the March public data release, EEG recordings will not include the impedances and electrodes files. These will be released in a future interim release. If you have questions about this, please reach out to eegdata@umd.edu.
 
-Additionally, we've identified an artifact related to the stim tracker pulse in the dataset for the ID below. Analyses with this ID should avoid electrode E55, as the artifact is most pronounced in this and the surrounding electrodes. Further characterization of this artifact can be found in the "Stimtracker artifact documentation" document on the repository.
+Additionally, we've identified an artifact related to the stim tracker pulse in the dataset for the ID below. Further characterization of this artifact can be found in the "Stimtracker artifact documentation" document on the repository.
 - sub-1248914553: FACE, MMN, VEP
 
 Finally, a number of IDs will have their EEG data excluded for this release but will have data for other modalities. Below is a list of excluded IDs and the reason for their exclusion.
