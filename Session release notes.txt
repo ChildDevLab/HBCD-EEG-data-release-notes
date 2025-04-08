@@ -2,7 +2,7 @@ For the March public data release, EEG recordings will not include the impedance
 
 Additionally, we've identified an artifact related to the stim tracker pulse in the dataset for the ID below. Further characterization of this artifact can be found in the "Stimtracker artifact documentation" document on the repository.
 - sub-1248914553: FACE, MMN, VEP
-- sub-3874368810: FACE, MMN, VEP
+- sub-3874368810: MMN
 
 Finally, a number of IDs will have their EEG data excluded for this release but will have data for other modalities. Below is a list of excluded IDs and the reason for their exclusion.
 
